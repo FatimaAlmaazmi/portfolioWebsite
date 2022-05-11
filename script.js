@@ -6,9 +6,6 @@ var main = document.querySelector('.main');
 barOpen.addEventListener("click", function(){
 console.log("sidebar HI!!")
 sidebar.style.display = "block";
-// sidebar.style.transition = "e";
-// barOpen.style.display = "none";
- // main.classList.toggle('.sidebar-content');
 });
 
 barClose.addEventListener("click", function(){
@@ -16,8 +13,9 @@ console.log("sidebar BYE!!")
 
 sidebar.style.display = "none";
 
-// sidebar.classList.toggle('.open-sidebar');
+
 });
+
 
 function handleMobileToDesktopChange(query)
 {
@@ -74,12 +72,12 @@ function setup(){
   balls.push(new Ball(
     random(width),
     random(height),
-    250,
+    300,
     balls.length,
     balls,
     color(255, 196, 245),
-    "Fatima Almaazmi",
-    "about.html"
+    "About my balls",
+    "about"
   ));
 
 //project 1 ball
@@ -91,7 +89,7 @@ function setup(){
     balls,
     color(215, 159, 250),
     "Let's Zoom!",
-    "about.html"
+    "https://fatimaalmaazmi.github.io/30MFFWebsite/"
   ));
 
 //project 2 ball
@@ -103,7 +101,7 @@ function setup(){
     balls,
     color(250, 195, 159),
     "The Goodest Boy",
-    "about.html"
+    "https://fatimaalmaazmi.github.io/comicWebsite/"
   ));
 
 //project 3 ball
@@ -115,7 +113,7 @@ function setup(){
     balls,
     color(250, 162, 159),
     "Guy's Show",
-    "about.html"
+    "https://nicholasraffone.github.io/CommLab-Asg3/"
   ));
 
 //project 4 ball
@@ -127,7 +125,7 @@ function setup(){
     balls,
     color(180,250, 95),
     "Agent Bow",
-    "about.html"
+    "https://mission-ulens-brief.netlify.app/"
   ));
 
 
