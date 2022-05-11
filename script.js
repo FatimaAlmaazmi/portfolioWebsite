@@ -1,3 +1,4 @@
+// sidebar!
 var barOpen = document.querySelector('.bars');
 var barClose = document.querySelector('.bars-close');
 var sidebar = document.querySelector('.sidebar-content');
@@ -17,6 +18,7 @@ sidebar.style.display = "none";
 });
 
 
+// responsiveness!
 function handleMobileToDesktopChange(query)
 {
   if(query.matches)
@@ -29,13 +31,15 @@ function handleMobileToDesktopChange(query)
 }
 
 var responsiveMediaQuery = window.matchMedia('(max-width: 768px)');
-
 //listen for change
 responsiveMediaQuery.addListener(handleMobileToDesktopChange);
 //get initial state
 handleMobileToDesktopChange(responsiveMediaQuery);
 
 
+
+
+// P5 starts here!
 
 var canvas;
 var x;
@@ -50,10 +54,12 @@ let balls = [];
 
 
 function setup(){
+
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0,0);
   canvas.style("z-index", "-1");
 
+//fun balls
   for (let i = 0; i < numBalls; i++) {
    balls[i] = new Ball(
      random(width),
@@ -67,8 +73,10 @@ function setup(){
    );
  }
 
-//about ball
 
+// clickable balls
+
+//about ball
   balls.push(new Ball(
     random(width),
     random(height),
@@ -77,7 +85,7 @@ function setup(){
     balls,
     color(255, 196, 245),
     "About my balls",
-    "about"
+    "about.html"
   ));
 
 //project 1 ball
@@ -130,16 +138,17 @@ function setup(){
 
 
 
-}
+}//end of setup
+
+
 
 function mousePressed(){
-
 
   balls.forEach(ball => {
     if(dist(mouseX, mouseY, ball.x, ball.y) < ball.diameter/2){
       console.log("clicked");
       if(ball.href != null){
-        window.open(ball.href);
+        window.open(ball.href, '_self');
         }
       }
     }
@@ -159,14 +168,15 @@ function mousePressed(){
       )
     );
   }
-}
+
+}//end of mousePressed
 
 
 
 
 function windowResized(){
 resizeCanvas(windowWidth, windowHeight);
-}
+}//end of windowResized
 
 
 
@@ -186,20 +196,16 @@ class Ball {
 
     console.log(this.id);
 
-  }
+  }//end of constructor
 
 
   collide() {
   for (let i = this.id + 1; i < balls.length; i++) {
-    // console.log(others[i]);
     let dx = this.others[i].x - this.x;
     let dy = this.others[i].y - this.y;
     let distance = sqrt(dx * dx + dy * dy);
     let minDist = this.others[i].diameter / 2 + this.diameter / 2;
-    //   console.log(distance);
-    //console.log(minDist);
     if (distance < minDist) {
-      //console.log("2");
       let angle = atan2(dy, dx);
       let targetX = this.x + cos(angle) * minDist;
       let targetY = this.y + sin(angle) * minDist;
@@ -211,7 +217,7 @@ class Ball {
       this.others[i].vy += ay;
     }
   }
-}
+}//end of collide
 
 move() {
     this.vx *= drag;
@@ -233,7 +239,7 @@ move() {
       this.y = this.diameter / 2;
       this.vy *= friction;
     }
-  }
+  }//end of move
 
 
 
@@ -267,7 +273,8 @@ move() {
       text(this.title, -92, 10);
       pop();
     }
-  }
+  }//end of display
+
 }//end of class Ball
 
 
@@ -280,4 +287,4 @@ function draw(){
     ball.move();
     ball.display();
   });
-}
+}//end of draw
